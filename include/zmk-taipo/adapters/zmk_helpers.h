@@ -1,80 +1,52 @@
 #pragma once
 
-// Adapter for standard zmk-helpers key-labels.
-// Requires labels like LT1, LM1, RT1, RM1, LH0, RH0 and optionally LH1/RH1.
+// Adapter to map taipo positions to a set of key positions from urob's zmk-helpers.
+// Allows the disabling of either hand for single-handed keyboards
 
-#ifndef TAIPO_POS_L_T1
-#define TAIPO_POS_L_T1 LT1
-#endif
-#ifndef TAIPO_POS_L_T2
-#define TAIPO_POS_L_T2 LT2
-#endif
-#ifndef TAIPO_POS_L_T3
-#define TAIPO_POS_L_T3 LT3
-#endif
-#ifndef TAIPO_POS_L_T4
-#define TAIPO_POS_L_T4 LT4
-#endif
-
-#ifndef TAIPO_POS_L_M1
-#define TAIPO_POS_L_M1 LM1
-#endif
-#ifndef TAIPO_POS_L_M2
-#define TAIPO_POS_L_M2 LM2
-#endif
-#ifndef TAIPO_POS_L_M3
-#define TAIPO_POS_L_M3 LM3
-#endif
-#ifndef TAIPO_POS_L_M4
-#define TAIPO_POS_L_M4 LM4
-#endif
-
-#ifndef TAIPO_POS_R_T1
-#define TAIPO_POS_R_T1 RT1
-#endif
-#ifndef TAIPO_POS_R_T2
-#define TAIPO_POS_R_T2 RT2
-#endif
-#ifndef TAIPO_POS_R_T3
-#define TAIPO_POS_R_T3 RT3
-#endif
-#ifndef TAIPO_POS_R_T4
-#define TAIPO_POS_R_T4 RT4
-#endif
-
-#ifndef TAIPO_POS_R_M1
-#define TAIPO_POS_R_M1 RM1
-#endif
-#ifndef TAIPO_POS_R_M2
-#define TAIPO_POS_R_M2 RM2
-#endif
-#ifndef TAIPO_POS_R_M3
-#define TAIPO_POS_R_M3 RM3
-#endif
-#ifndef TAIPO_POS_R_M4
-#define TAIPO_POS_R_M4 RM4
-#endif
-
-#ifndef TAIPO_POS_LH_INNER
-#define TAIPO_POS_LH_INNER LH0
-#endif
-
-#ifndef TAIPO_POS_LH_OUTER
-#if defined(LH1)
-#define TAIPO_POS_LH_OUTER LH1
+#ifndef TAIPO_ONLY_RIGHT_HAND
+#define TAIPO_POS_LT1 TAIPO_UNUSED_POS
+#define TAIPO_POS_LT2 TAIPO_UNUSED_POS
+#define TAIPO_POS_LT3 TAIPO_UNUSED_POS
+#define TAIPO_POS_LT4 TAIPO_UNUSED_POS
+#define TAIPO_POS_LM1 TAIPO_UNUSED_POS
+#define TAIPO_POS_LM2 TAIPO_UNUSED_POS
+#define TAIPO_POS_LM3 TAIPO_UNUSED_POS
+#define TAIPO_POS_LM4 TAIPO_UNUSED_POS
+#define TAIPO_POS_LH0 TAIPO_UNUSED_POS
+#define TAIPO_POS_LH1 TAIPO_UNUSED_POS
 #else
-#define TAIPO_POS_LH_OUTER LB1
-#endif
+#define TAIPO_POS_LT1 LT1
+#define TAIPO_POS_LT2 LT2
+#define TAIPO_POS_LT3 LT3
+#define TAIPO_POS_LT4 LT4
+#define TAIPO_POS_LM1 LM1
+#define TAIPO_POS_LM2 LM2
+#define TAIPO_POS_LM3 LM3
+#define TAIPO_POS_LM4 LM4
+#define TAIPO_POS_LH0 LH0
+#define TAIPO_POS_LH1 LH1
 #endif
 
-#ifndef TAIPO_POS_RH_INNER
-#define TAIPO_POS_RH_INNER RH0
-#endif
-
-#ifndef TAIPO_POS_RH_OUTER
-#if defined(RH1)
-#define TAIPO_POS_RH_OUTER RH1
+#ifndef TAIPO_ONLY_LEFT_HAND
+#define TAIPO_POS_RT1 TAIPO_UNUSED_POS
+#define TAIPO_POS_RT2 TAIPO_UNUSED_POS
+#define TAIPO_POS_RT3 TAIPO_UNUSED_POS
+#define TAIPO_POS_RT4 TAIPO_UNUSED_POS
+#define TAIPO_POS_RM1 TAIPO_UNUSED_POS
+#define TAIPO_POS_RM2 TAIPO_UNUSED_POS
+#define TAIPO_POS_RM3 TAIPO_UNUSED_POS
+#define TAIPO_POS_RM4 TAIPO_UNUSED_POS
+#define TAIPO_POS_RH0 TAIPO_UNUSED_POS
+#define TAIPO_POS_RH1 TAIPO_UNUSED_POS
 #else
-#define TAIPO_POS_RH_OUTER RB1
-#endif
+#define TAIPO_POS_RT1 RT1
+#define TAIPO_POS_RT2 RT2
+#define TAIPO_POS_RT3 RT3
+#define TAIPO_POS_RT4 RT4
+#define TAIPO_POS_RM1 RM1
+#define TAIPO_POS_RM2 RM2
+#define TAIPO_POS_RM3 RM3
+#define TAIPO_POS_RM4 RM4
+#define TAIPO_POS_RH0 RH0
+#define TAIPO_POS_RH1 RH1
 #endif

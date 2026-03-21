@@ -26,6 +26,8 @@
 // - TAIPO_THUMB_ORDER_IOOI (inner-outer-outer-inner)
 // - TAIPO_THUMB_ORDER_OIIO (outer-inner-inner-outer)
 // Default: OIIO
+// IOOI means that the inner thumbs are closer to the inside of your hands
+// OIIO means that the inner thumbs are closer to the inside of your keyboard
 #if !defined(TAIPO_THUMB_ORDER_IOOI) && !defined(TAIPO_THUMB_ORDER_OIIO)
 #define TAIPO_THUMB_ORDER_OIIO 1
 #endif
@@ -35,23 +37,15 @@
 #endif
 
 #if defined(TAIPO_THUMB_ORDER_IOOI)
-#define INNER_THUMB_L TAIPO_POS_LH_OUTER
-#define OUTER_THUMB_L TAIPO_POS_LH_INNER
-#define OUTER_THUMB_R TAIPO_POS_RH_INNER
-#define INNER_THUMB_R TAIPO_POS_RH_OUTER
-#define TAIPO_TH_1 &kp SPACE
-#define TAIPO_TH_2 &kp BSPC
-#define TAIPO_TH_3 &kp BSPC
-#define TAIPO_TH_4 &kp SPACE
+#define INNER_THUMB_L TAIPO_POS_LH1
+#define OUTER_THUMB_L TAIPO_POS_LH0
+#define OUTER_THUMB_R TAIPO_POS_RH0
+#define INNER_THUMB_R TAIPO_POS_RH1
 #elif defined(TAIPO_THUMB_ORDER_OIIO)
-#define OUTER_THUMB_L TAIPO_POS_LH_OUTER
-#define INNER_THUMB_L TAIPO_POS_LH_INNER
-#define INNER_THUMB_R TAIPO_POS_RH_INNER
-#define OUTER_THUMB_R TAIPO_POS_RH_OUTER
-#define TAIPO_TH_1 &kp BSPC
-#define TAIPO_TH_2 &kp SPACE
-#define TAIPO_TH_3 &kp SPACE
-#define TAIPO_TH_4 &kp BSPC
+#define OUTER_THUMB_L TAIPO_POS_LH1
+#define INNER_THUMB_L TAIPO_POS_LH0
+#define INNER_THUMB_R TAIPO_POS_RH0
+#define OUTER_THUMB_R TAIPO_POS_RH1
 #else
 #error "You must define either TAIPO_THUMB_ORDER_IOOI or TAIPO_THUMB_ORDER_OIIO"
 #endif
@@ -74,8 +68,8 @@
 #define TAIPO_OUTER 2
 #endif
 
-#define TAIPO_L_POS(x) TAIPO_POS_L_##x
-#define TAIPO_R_POS(x) TAIPO_POS_R_##x
+#define TAIPO_L_POS(x) TAIPO_POS_L##x
+#define TAIPO_R_POS(x) TAIPO_POS_R##x
 
 #define TAIPO_MAP_L_1(x) TAIPO_L_POS(x)
 #define TAIPO_MAP_L_2(x, y) TAIPO_L_POS(x) TAIPO_L_POS(y)
@@ -99,32 +93,38 @@
 #define TAIPO_MAP_L(...) TAIPO_GET_KEYS(__VA_ARGS__, TAIPO_MAP_L_8, TAIPO_MAP_L_7, TAIPO_MAP_L_6, TAIPO_MAP_L_5, TAIPO_MAP_L_4, TAIPO_MAP_L_3, TAIPO_MAP_L_2, TAIPO_MAP_L_1)(__VA_ARGS__)
 #define TAIPO_MAP_R(...) TAIPO_GET_KEYS(__VA_ARGS__, TAIPO_MAP_R_8, TAIPO_MAP_R_7, TAIPO_MAP_R_6, TAIPO_MAP_R_5, TAIPO_MAP_R_4, TAIPO_MAP_R_3, TAIPO_MAP_R_2, TAIPO_MAP_R_1)(__VA_ARGS__)
 
-#if TAIPO_ENABLE_RIGHT_HAND
+#if TAIPO_ONLY_RIGHT_HAND
+#define TAIPO_IF_LEFT(...)
 #define TAIPO_IF_RIGHT(...) __VA_ARGS__
-#else
+#elif TAIPO_ONLY_LEFT_HAND
+#define TAIPO_IF_LEFT(...) __VA_ARGS__
 #define TAIPO_IF_RIGHT(...)
+#else
+#define TAIPO_IF_LEFT(...) __VA_ARGS__
+#define TAIPO_IF_RIGHT(...) __VA_ARGS__
 #endif
 
 // Macros to expand into left/right combos and virtual thumb variants.
 #define ZMK_COMBO_TAIPO(name, kp, ...) \
-    ZMK_COMBO(taipoL##name, kp, TAIPO_MAP_L(__VA_ARGS__), TAIPO, TAIPO_COMBO_TERM_FAST) \
+    TAIPO_IF_LEFT(ZMK_COMBO(taipoL##name, kp, TAIPO_MAP_L(__VA_ARGS__), TAIPO, TAIPO_COMBO_TERM_FAST)) \
     TAIPO_IF_RIGHT(ZMK_COMBO(taipoR##name, kp, TAIPO_MAP_R(__VA_ARGS__), TAIPO, TAIPO_COMBO_TERM_FAST))
 
 #define ZMK_COMBO_TAIPO_IT(name, kp, ...) \
-    ZMK_COMBO(taipoLIT##name, kp, TAIPO_MAP_L(__VA_ARGS__) ITL, TAIPO, TAIPO_COMBO_TERM_FAST) \
+    TAIPO_IF_LEFT(ZMK_COMBO(taipoLIT##name, kp, TAIPO_MAP_L(__VA_ARGS__) ITL, TAIPO, TAIPO_COMBO_TERM_FAST)) \
     TAIPO_IF_RIGHT(ZMK_COMBO(taipoRIT##name, kp, TAIPO_MAP_R(__VA_ARGS__) ITR, TAIPO, TAIPO_COMBO_TERM_FAST)) \
-    ZMK_COMBO(taipoLIV##name, kp, TAIPO_MAP_L(__VA_ARGS__), TAIPO_INNER, TAIPO_COMBO_TERM_FAST) \
+    TAIPO_IF_LEFT(ZMK_COMBO(taipoLIV##name, kp, TAIPO_MAP_L(__VA_ARGS__), TAIPO_INNER, TAIPO_COMBO_TERM_FAST)) \
     TAIPO_IF_RIGHT(ZMK_COMBO(taipoRIV##name, kp, TAIPO_MAP_R(__VA_ARGS__), TAIPO_INNER, TAIPO_COMBO_TERM_FAST))
 
 #define ZMK_COMBO_TAIPO_OT(name, kp, ...) \
-    ZMK_COMBO(taipoLOT##name, kp, TAIPO_MAP_L(__VA_ARGS__) OTL, TAIPO, TAIPO_COMBO_TERM_FAST) \
+    TAIPO_IF_LEFT(ZMK_COMBO(taipoLOT##name, kp, TAIPO_MAP_L(__VA_ARGS__) OTL, TAIPO, TAIPO_COMBO_TERM_FAST)) \
     TAIPO_IF_RIGHT(ZMK_COMBO(taipoROT##name, kp, TAIPO_MAP_R(__VA_ARGS__) OTR, TAIPO, TAIPO_COMBO_TERM_FAST)) \
-    ZMK_COMBO(taipoLOV##name, kp, TAIPO_MAP_L(__VA_ARGS__), TAIPO_OUTER, TAIPO_COMBO_TERM_FAST) \
+    TAIPO_IF_LEFT(ZMK_COMBO(taipoLOV##name, kp, TAIPO_MAP_L(__VA_ARGS__), TAIPO_OUTER, TAIPO_COMBO_TERM_FAST)) \
     TAIPO_IF_RIGHT(ZMK_COMBO(taipoROV##name, kp, TAIPO_MAP_R(__VA_ARGS__), TAIPO_OUTER, TAIPO_COMBO_TERM_FAST))
 
-// Optional features:
-// - #include <zmk-taipo/features/virtual_thumbs.dtsi>
-// - #include <zmk-taipo/features/leader.dtsi>
+ZMK_COMBO(taipoLspace   , &kp SPACE, INNER_THUMB_L)
+ZMK_COMBO(taipoRspace   , &kp SPACE, INNER_THUMB_R)
+ZMK_COMBO(taipoLbspace  , &kp BSPC , OUTER_THUMB_L)
+ZMK_COMBO(taipoRbspace  , &kp BSPC , OUTER_THUMB_R)
 
 ZMK_COMBO_TAIPO(e       , &kp E    , M1)
 ZMK_COMBO_TAIPO(t       , &kp T    , M2)
@@ -288,3 +288,43 @@ ZMK_COMBO_TAIPO_OT(home , &kp HOME , M1, T1)
 ZMK_COMBO_TAIPO_OT(pgdn , &kp PG_DN, M2, T2)
 ZMK_COMBO_TAIPO_OT(pgup , &kp PG_UP, M3, T3)
 ZMK_COMBO_TAIPO_OT(end  , &kp END  , M4, T4)
+
+// Taipo leader combo for F-key access. Depends on urob's zmk-leader-key
+ZMK_COMBO_TAIPO_OT(lead, &tlead, T1, T2, T3)
+
+#define ZMK_TAIPO_LEADER_SEQUENCE(name, leader_bindings, leader_sequence) \
+    / { \
+        behaviors { \
+            tlead: tlead { \
+                compatible = "zmk,behavior-leader-key"; \
+                #binding-cells = <0>; \
+                ignore-keys = <LSHFT RSHFT>; \
+                leader_sequence_ ## name { \
+                    bindings = <leader_bindings>; \
+                    sequence = <leader_sequence>; \
+                }; \
+            }; \
+        }; \
+    };
+
+// leader 1-9: F1-F9
+// leader 0 0-9: F10-F19
+ZMK_TAIPO_LEADER_SEQUENCE(f1,  &kp F1,  N1)
+ZMK_TAIPO_LEADER_SEQUENCE(f2,  &kp F2,  N2)
+ZMK_TAIPO_LEADER_SEQUENCE(f3,  &kp F3,  N3)
+ZMK_TAIPO_LEADER_SEQUENCE(f4,  &kp F4,  N4)
+ZMK_TAIPO_LEADER_SEQUENCE(f5,  &kp F5,  N5)
+ZMK_TAIPO_LEADER_SEQUENCE(f6,  &kp F6,  N6)
+ZMK_TAIPO_LEADER_SEQUENCE(f7,  &kp F7,  N7)
+ZMK_TAIPO_LEADER_SEQUENCE(f8,  &kp F8,  N8)
+ZMK_TAIPO_LEADER_SEQUENCE(f9,  &kp F9,  N9)
+ZMK_TAIPO_LEADER_SEQUENCE(f10, &kp F10, N0 N0)
+ZMK_TAIPO_LEADER_SEQUENCE(f11, &kp F11, N0 N1)
+ZMK_TAIPO_LEADER_SEQUENCE(f12, &kp F12, N0 N2)
+ZMK_TAIPO_LEADER_SEQUENCE(f13, &kp F13, N0 N3)
+ZMK_TAIPO_LEADER_SEQUENCE(f14, &kp F14, N0 N4)
+ZMK_TAIPO_LEADER_SEQUENCE(f15, &kp F15, N0 N5)
+ZMK_TAIPO_LEADER_SEQUENCE(f16, &kp F16, N0 N6)
+ZMK_TAIPO_LEADER_SEQUENCE(f17, &kp F17, N0 N7)
+ZMK_TAIPO_LEADER_SEQUENCE(f18, &kp F18, N0 N8)
+ZMK_TAIPO_LEADER_SEQUENCE(f19, &kp F19, N0 N9)
