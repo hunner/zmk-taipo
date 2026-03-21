@@ -1,0 +1,16 @@
+// the_paintbrush_left-style single-hand integration.
+#include <zmk-helpers/helper.h>
+
+// Define LT*/LM* labels for your board first.
+
+#include <zmk-taipo/adapters/single_hand_left.h>
+
+#define TAIPO 0
+#define TAIPO_INNER 1
+#define TAIPO_OUTER 2
+#define TAIPO_ENABLE_RIGHT_HAND 0
+#define TAIPO_THUMB_ORDER_OIIO 1
+
+#include <zmk-taipo/taipo.dtsi>
+#include <zmk-taipo/features/virtual_thumbs.dtsi>
+#include <zmk-taipo/features/leader.dtsi>

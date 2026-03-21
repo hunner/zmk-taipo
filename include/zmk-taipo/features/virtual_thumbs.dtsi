@@ -1,0 +1,28 @@
+#ifndef ZMK_TAIPO_CORE_INCLUDED
+#error "Include <zmk-taipo/taipo.dtsi> before virtual_thumbs.dtsi"
+#endif
+
+#ifndef ZMK_TAIPO_FEATURE_VIRTUAL_THUMBS_INCLUDED
+#define ZMK_TAIPO_FEATURE_VIRTUAL_THUMBS_INCLUDED 1
+
+// One-shot virtual inner thumb: M2+M3+M4
+ZMK_COMBO_TAIPO(virt_inner_once, &sl TAIPO_INNER, M2, M3, M4)
+
+// One-shot virtual outer thumb: T2+T3+T4
+ZMK_COMBO_TAIPO(virt_outer_once, &sl TAIPO_OUTER, T2, T3, T4)
+
+#ifndef TAIPO_DISABLE_VIRTUAL_THUMB_LOCKS
+// Lock/unlock virtual inner thumb: T1+M2+M3+M4
+ZMK_COMBO_TAIPO(virt_inner_lock     , &tog TAIPO_INNER, T1, M2, M3, M4)
+ZMK_COMBO_TAIPO_IT(virt_inner_unlock, &tog TAIPO_INNER, T1, M2, M3, M4)
+
+// Lock/unlock virtual outer thumb: M1+T2+T3+T4
+ZMK_COMBO_TAIPO(virt_outer_lock     , &tog TAIPO_OUTER, M1, T2, T3, T4)
+ZMK_COMBO_TAIPO_OT(virt_outer_unlock, &tog TAIPO_OUTER, M1, T2, T3, T4)
+#endif
+
+// Optional space/backspace fallbacks for thumbless Taipo.
+ZMK_COMBO_TAIPO(space, &kp SPACE, M1, M2, M3, M4)
+ZMK_COMBO_TAIPO(bspc , &kp BSPC , T1, T2, T3, T4)
+
+#endif // ZMK_TAIPO_FEATURE_VIRTUAL_THUMBS_INCLUDED
