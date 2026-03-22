@@ -94,11 +94,11 @@
 #define TAIPO_MAP_R(...) TAIPO_GET_KEYS(__VA_ARGS__, TAIPO_MAP_R_8, TAIPO_MAP_R_7, TAIPO_MAP_R_6, TAIPO_MAP_R_5, TAIPO_MAP_R_4, TAIPO_MAP_R_3, TAIPO_MAP_R_2, TAIPO_MAP_R_1)(__VA_ARGS__)
 
 #if TAIPO_ONLY_RIGHT_HAND
-#define TAIPO_IF_LEFT(...)
+#define TAIPO_IF_LEFT(...) __VA_ARGS__
 #define TAIPO_IF_RIGHT(...) __VA_ARGS__
 #elif TAIPO_ONLY_LEFT_HAND
 #define TAIPO_IF_LEFT(...) __VA_ARGS__
-#define TAIPO_IF_RIGHT(...)
+#define TAIPO_IF_RIGHT(...) __VA_ARGS__
 #else
 #define TAIPO_IF_LEFT(...) __VA_ARGS__
 #define TAIPO_IF_RIGHT(...) __VA_ARGS__
