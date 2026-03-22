@@ -1,5 +1,4 @@
 #include <zmk-taipo/adapters/zmk_helpers.h>
-#include <zmk-taipo/positions.h>
 
 #define ZMK_TAIPO_CORE_INCLUDED 1
 
@@ -17,10 +16,6 @@
 
 #ifndef COMBO_TERM_SLOW
 #define COMBO_TERM_SLOW TAIPO_COMBO_TERM_SLOW
-#endif
-
-#ifndef TAIPO_ENABLE_RIGHT_HAND
-#define TAIPO_ENABLE_RIGHT_HAND 1
 #endif
 
 // Choose one:
