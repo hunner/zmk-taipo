@@ -3,7 +3,7 @@
 // Adapter to map taipo positions to a set of key positions from urob's zmk-helpers.
 // Allows the disabling of either hand for single-handed keyboards
 
-#ifndef TAIPO_ONLY_RIGHT_HAND
+#ifdef TAIPO_ONLY_RIGHT_HAND
 #define TAIPO_POS_L_T1 TAIPO_UNUSED_POS
 #define TAIPO_POS_L_T2 TAIPO_UNUSED_POS
 #define TAIPO_POS_L_T3 TAIPO_UNUSED_POS
@@ -27,7 +27,7 @@
 #define TAIPO_POS_L_H1 LH1
 #endif
 
-#ifndef TAIPO_ONLY_LEFT_HAND
+#ifdef TAIPO_ONLY_LEFT_HAND
 #define TAIPO_POS_R_T1 TAIPO_UNUSED_POS
 #define TAIPO_POS_R_T2 TAIPO_UNUSED_POS
 #define TAIPO_POS_R_T3 TAIPO_UNUSED_POS
