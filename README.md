@@ -81,6 +81,7 @@ or if you want to use raw key positions instead of key labels, you can define:
 
 - `TAIPO_COMBO_TERM_FAST` (default `100`) is the combo term for the Taipo combos. This is a shorter combo term than the default ZMK combo term, which allows for faster combos. You can adjust this value to suit your typing speed and accuracy.
 - `TAIPO_PASTE_BINDING` (default `&kp LS(INSERT)`) is the binding for the paste combo. You can change this to any binding you want for pasting, such as `LC(V)` for Ctrl+V. This is bound to outer `OTE`, since the original AltGr key is not as useful.
+- `TAIPO_MODS_GACS`/`TAIPO_MODS_CAGS`/`TAIPO_MODS_GASC`/`TAIPO_MODS_SCGA`/`TAIPO_MODS_SCAG` defines the mods order from outside to inside. `GACS` is the default order if unspecified. See [A Guide to Homerow Mods](https://precondition.github.io/home-row-mods) for more information
 
 ## Optional Features
 
