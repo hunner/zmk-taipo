@@ -51,17 +51,8 @@
 #define ITR INNER_THUMB_R
 #define OTR OUTER_THUMB_R
 
-#ifdef TAIPO
-#ifndef TAIPO_INNER
-#error "TAIPO_INNER and TAIPO_OUTER must be defined when TAIPO is overridden"
-#endif
-#ifndef TAIPO_OUTER
-#error "TAIPO_INNER and TAIPO_OUTER must be defined when TAIPO is overridden"
-#endif
-#else
-#define TAIPO 0
-#define TAIPO_INNER 1
-#define TAIPO_OUTER 2
+#ifndef TAIPO
+#error "A layer TAIPO must be defined before including taipo.dtsi"
 #endif
 
 #define TAIPO_MAP_L_1(x) TAIPO_POS_L##x
@@ -125,14 +116,18 @@
 #define ZMK_COMBO_TAIPO_IT(name, kp, ...) \
     TAIPO_IF_LEFT(ZMK_COMBO(taipoLIT##name, kp, TAIPO_MAP_L(__VA_ARGS__) ITL, TAIPO, TAIPO_COMBO_TERM_FAST)) \
     TAIPO_IF_RIGHT(ZMK_COMBO(taipoRIT##name, kp, TAIPO_MAP_R(__VA_ARGS__) ITR, TAIPO, TAIPO_COMBO_TERM_FAST)) \
+    #ifdef TAIPO_INNER \
     TAIPO_IF_LEFT(ZMK_COMBO(taipoLIV##name, kp, TAIPO_MAP_L(__VA_ARGS__), TAIPO_INNER, TAIPO_COMBO_TERM_FAST)) \
-    TAIPO_IF_RIGHT(ZMK_COMBO(taipoRIV##name, kp, TAIPO_MAP_R(__VA_ARGS__), TAIPO_INNER, TAIPO_COMBO_TERM_FAST))
+    TAIPO_IF_RIGHT(ZMK_COMBO(taipoRIV##name, kp, TAIPO_MAP_R(__VA_ARGS__), TAIPO_INNER, TAIPO_COMBO_TERM_FAST)) \
+    #endif
 
 #define ZMK_COMBO_TAIPO_OT(name, kp, ...) \
     TAIPO_IF_LEFT(ZMK_COMBO(taipoLOT##name, kp, TAIPO_MAP_L(__VA_ARGS__) OTL, TAIPO, TAIPO_COMBO_TERM_FAST)) \
     TAIPO_IF_RIGHT(ZMK_COMBO(taipoROT##name, kp, TAIPO_MAP_R(__VA_ARGS__) OTR, TAIPO, TAIPO_COMBO_TERM_FAST)) \
+    #ifdef TAIPO_OUTER \
     TAIPO_IF_LEFT(ZMK_COMBO(taipoLOV##name, kp, TAIPO_MAP_L(__VA_ARGS__), TAIPO_OUTER, TAIPO_COMBO_TERM_FAST)) \
-    TAIPO_IF_RIGHT(ZMK_COMBO(taipoROV##name, kp, TAIPO_MAP_R(__VA_ARGS__), TAIPO_OUTER, TAIPO_COMBO_TERM_FAST))
+    TAIPO_IF_RIGHT(ZMK_COMBO(taipoROV##name, kp, TAIPO_MAP_R(__VA_ARGS__), TAIPO_OUTER, TAIPO_COMBO_TERM_FAST)) \
+    #endif
 
 ZMK_COMBO(taipoLspace   , &kp SPACE, ITL, TAIPO, TAIPO_COMBO_TERM_FAST)
 ZMK_COMBO(taipoRspace   , &kp SPACE, ITR, TAIPO, TAIPO_COMBO_TERM_FAST)

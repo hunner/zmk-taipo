@@ -2,6 +2,13 @@
 #error "Include <zmk-taipo/taipo.dtsi> before virtual_thumbs.dtsi"
 #endif
 
+#ifndef TAIPO_INNER
+#error "TAIPO_INNER and TAIPO_OUTER must be defined when using virtual thumbs"
+#endif
+#ifndef TAIPO_OUTER
+#error "TAIPO_INNER and TAIPO_OUTER must be defined when using virtual thumbs"
+#endif
+
 // One-shot virtual inner thumb: M2+M3+M4
 ZMK_COMBO_TAIPO(virt_inner_once, &sl TAIPO_INNER, t, o, e)
 
