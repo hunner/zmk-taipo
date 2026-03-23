@@ -120,5 +120,8 @@ Note: It is required to define two additional layers before including this dtsi 
 #define TAIPO_OUTER 8
 ```
 
+Virtual thumbs may be used on any keyboard, but you must `#define TAIPO_NO_THUMBS 1` to disable the thumb keycodes before including the taipo.dtsi file.
+
+
 ## Adapters and Examples
 - Usage snippets: `examples/`
