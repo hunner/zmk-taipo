@@ -3,21 +3,21 @@
 #endif
 
 // One-shot virtual inner thumb: M2+M3+M4
-ZMK_COMBO_TAIPO(virt_inner_once, &sl TAIPO_INNER, M2, M3, M4)
+ZMK_COMBO_TAIPO(virt_inner_once, &sl TAIPO_INNER, t, o, e)
 
 // One-shot virtual outer thumb: T2+T3+T4
-ZMK_COMBO_TAIPO(virt_outer_once, &sl TAIPO_OUTER, T2, T3, T4)
+ZMK_COMBO_TAIPO(virt_outer_once, &sl TAIPO_OUTER, n, s, r)
 
 #ifndef TAIPO_DISABLE_VIRTUAL_THUMB_LOCKS
 // Lock/unlock virtual inner thumb: T1+M2+M3+M4
-ZMK_COMBO_TAIPO(virt_inner_lock     , &tog TAIPO_INNER, T1, M2, M3, M4)
-ZMK_COMBO_TAIPO_IT(virt_inner_unlock, &tog TAIPO_INNER, T1, M2, M3, M4)
+ZMK_COMBO_TAIPO(virt_inner_lock     , &tog TAIPO_INNER, i, t, o, a)
+ZMK_COMBO_TAIPO_IT(virt_inner_unlock, &tog TAIPO_INNER, i, t, o, a)
 
 // Lock/unlock virtual outer thumb: M1+T2+T3+T4
-ZMK_COMBO_TAIPO(virt_outer_lock     , &tog TAIPO_OUTER, M1, T2, T3, T4)
-ZMK_COMBO_TAIPO_OT(virt_outer_unlock, &tog TAIPO_OUTER, M1, T2, T3, T4)
+ZMK_COMBO_TAIPO(virt_outer_lock     , &tog TAIPO_OUTER, e, n, s, r)
+ZMK_COMBO_TAIPO_OT(virt_outer_unlock, &tog TAIPO_OUTER, e, n, s, r)
 #endif
 
 // Optional space/backspace fallbacks for thumbless Taipo.
-ZMK_COMBO_TAIPO(vspace, &kp SPACE, M1, M2, M3, M4)
-ZMK_COMBO_TAIPO(vbspc , &kp BSPC , T1, T2, T3, T4)
+ZMK_COMBO_TAIPO(vspace, &kp SPACE, e, t, o, a)
+ZMK_COMBO_TAIPO(vbspc , &kp BSPC , i, n, s, r)
