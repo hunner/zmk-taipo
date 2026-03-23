@@ -274,20 +274,7 @@ ZMK_COMBO_TAIPO_IT(del  , &kp DEL  , i, n, s)
 
 ZMK_COMBO_TAIPO_OT(paste, TAIPO_PASTE_BINDING, e, t, o)
 
-#ifndef TAIPO_MODS_GACS
-#define TAIPO_MODS_GACS 1
-#endif
-
-#ifdef TAIPO_MODS_GACS
-#define TAIPO_MOD_1 LGUI
-#define TAIPO_MOD_2 LALT
-#define TAIPO_MOD_3 LCTRL
-#define TAIPO_MOD_4 LSHFT
-#define TAIPO_MOD_F1 LG
-#define TAIPO_MOD_F2 LA
-#define TAIPO_MOD_F3 LC
-#define TAIPO_MOD_F4 LS
-#elif defined(TAIPO_MODS_CAGS)
+#if defined(TAIPO_MODS_CAGS)
 #define TAIPO_MOD_1 LCTRL
 #define TAIPO_MOD_2 LALT
 #define TAIPO_MOD_3 LGUI
@@ -323,6 +310,16 @@ ZMK_COMBO_TAIPO_OT(paste, TAIPO_PASTE_BINDING, e, t, o)
 #define TAIPO_MOD_F2 LC
 #define TAIPO_MOD_F3 LA
 #define TAIPO_MOD_F4 LG
+#else
+// TAIPO_MODS_GACS is the default
+#define TAIPO_MOD_1 LGUI
+#define TAIPO_MOD_2 LALT
+#define TAIPO_MOD_3 LCTRL
+#define TAIPO_MOD_4 LSHFT
+#define TAIPO_MOD_F1 LG
+#define TAIPO_MOD_F2 LA
+#define TAIPO_MOD_F3 LC
+#define TAIPO_MOD_F4 LS
 #endif
 
 // These need to be sticky, but clear with repeat presses.
