@@ -33,15 +33,15 @@
 #endif
 
 #if defined(TAIPO_THUMB_ORDER_IOOI)
-#define INNER_THUMB_L TAIPO_POS_T1
-#define OUTER_THUMB_L TAIPO_POS_T2
-#define OUTER_THUMB_R TAIPO_POS_T3
-#define INNER_THUMB_R TAIPO_POS_T4
+#define INNER_THUMB_L TAIPO_POS_H1
+#define OUTER_THUMB_L TAIPO_POS_H2
+#define OUTER_THUMB_R TAIPO_POS_H3
+#define INNER_THUMB_R TAIPO_POS_H4
 #elif defined(TAIPO_THUMB_ORDER_OIIO)
-#define OUTER_THUMB_L TAIPO_POS_T1
-#define INNER_THUMB_L TAIPO_POS_T2
-#define INNER_THUMB_R TAIPO_POS_T3
-#define OUTER_THUMB_R TAIPO_POS_T4
+#define OUTER_THUMB_L TAIPO_POS_H1
+#define INNER_THUMB_L TAIPO_POS_H2
+#define INNER_THUMB_R TAIPO_POS_H3
+#define OUTER_THUMB_R TAIPO_POS_H4
 #else
 #error "You must define either TAIPO_THUMB_ORDER_IOOI or TAIPO_THUMB_ORDER_OIIO"
 #endif
@@ -64,8 +64,6 @@
 #define TAIPO_OUTER 2
 #endif
 
-// Paste taipo symbols like E/T/A directly into TAIPO_POS_* names so they do not
-// expand into HID keycodes before becoming key-position labels.
 #define TAIPO_MAP_L_1(x) TAIPO_POS_L##x
 #define TAIPO_MAP_L_2(x, y) TAIPO_POS_L##x TAIPO_POS_L##y
 #define TAIPO_MAP_L_3(x, y, z) TAIPO_POS_L##x TAIPO_POS_L##y TAIPO_POS_L##z
