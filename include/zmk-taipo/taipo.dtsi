@@ -274,24 +274,39 @@ ZMK_COMBO_TAIPO_IT(del  , &kp DEL  , i, n, s)
 
 ZMK_COMBO_TAIPO_OT(paste, TAIPO_PASTE_BINDING, e, t, o)
 
+#ifndef TAIPO_MODS_GACS
+#define TAIPO_MODS_GACS 1
+#endif
+
+#ifdef TAIPO_MODS_GACS
+#define TAIPO_MOD_1 LGUI
+#define TAIPO_MOD_2 LALT
+#define TAIPO_MOD_3 LCTRL
+#define TAIPO_MOD_4 LSHFT
+#define TAIPO_MOD_F1 LG
+#define TAIPO_MOD_F2 LA
+#define TAIPO_MOD_F3 LC
+#define TAIPO_MOD_F4 LS
+#endif
+
 // These need to be sticky, but clear with repeat presses.
-ZMK_COMBO_TAIPO(gui     , &sk LGUI    , a, r)
-ZMK_COMBO_TAIPO(alt     , &sk LALT    , o, s)
-ZMK_COMBO_TAIPO(ctl     , &sk LCTRL   , t, n)
-ZMK_COMBO_TAIPO(sft     , &sk LSHFT   , e, i)
+ZMK_COMBO_TAIPO(mod1    , &sk TAIPO_MOD_1    , a, r)
+ZMK_COMBO_TAIPO(mod2    , &sk TAIPO_MOD_2    , o, s)
+ZMK_COMBO_TAIPO(mod2    , &sk TAIPO_MOD_3    , t, n)
+ZMK_COMBO_TAIPO(mod2    , &sk TAIPO_MOD_4    , e, i)
 
 // Enumerate all possible GACS combinations.
-ZMK_COMBO_TAIPO(ga      , &sk LG(LALT)         , o, s, a, r)
-ZMK_COMBO_TAIPO(gc      , &sk LG(LCTRL)        , t, n, a, r)
-ZMK_COMBO_TAIPO(gs      , &sk LG(LSHFT)        , e, i, a, r)
-ZMK_COMBO_TAIPO(ac      , &sk LA(LCTRL)        , t, n, o, s)
-ZMK_COMBO_TAIPO(as      , &sk LA(LSHFT)        , e, i, o, s)
-ZMK_COMBO_TAIPO(cs      , &sk LC(LSHFT)        , e, i, t, n)
-ZMK_COMBO_TAIPO(gac     , &sk LG(LA(LCTRL))    , t, n, o, s, a, r)
-ZMK_COMBO_TAIPO(gas     , &sk LG(LA(LSHFT))    , e, i, o, s, a, r)
-ZMK_COMBO_TAIPO(gcs     , &sk LG(LC(LSHFT))    , e, i, t, n, a, r)
-ZMK_COMBO_TAIPO(acs     , &sk LA(LC(LSHFT))    , e, i, t, n, o, s)
-ZMK_COMBO_TAIPO(gacs    , &sk LG(LA(LC(LSHFT))), e, i, t, n, o, s, a, r)
+ZMK_COMBO_TAIPO(mod12   , &sk TAIPO_MOD_F1(TAIPO_MOD_2)         , o, s, a, r)
+ZMK_COMBO_TAIPO(mod13   , &sk LG(LCTRL)        , t, n, a, r)
+ZMK_COMBO_TAIPO(mod14   , &sk LG(LSHFT)        , e, i, a, r)
+ZMK_COMBO_TAIPO(mod23   , &sk LA(LCTRL)        , t, n, o, s)
+ZMK_COMBO_TAIPO(mod24   , &sk LA(LSHFT)        , e, i, o, s)
+ZMK_COMBO_TAIPO(mod34   , &sk LC(LSHFT)        , e, i, t, n)
+ZMK_COMBO_TAIPO(mod123  , &sk LG(LA(LCTRL))    , t, n, o, s, a, r)
+ZMK_COMBO_TAIPO(mod124  , &sk LG(LA(LSHFT))    , e, i, o, s, a, r)
+ZMK_COMBO_TAIPO(mod134  , &sk LG(LC(LSHFT))    , e, i, t, n, a, r)
+ZMK_COMBO_TAIPO(mod234  , &sk LA(LC(LSHFT))    , e, i, t, n, o, s)
+ZMK_COMBO_TAIPO(mod1234 , &sk LG(LA(LC(LSHFT))), e, i, t, n, o, s, a, r)
 
 // hjkl is left/down/up/right, so mirrored is right/up/down/left.
 ZMK_COMBO_TAIPO_IT(right, &kp RIGHT, a, r)
