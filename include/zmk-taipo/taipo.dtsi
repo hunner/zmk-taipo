@@ -64,26 +64,45 @@
 #define TAIPO_OUTER 2
 #endif
 
-#define TAIPO_L_POS(x) TAIPO_POS_L##x
-#define TAIPO_R_POS(x) TAIPO_POS_R##x
+// Paste taipo symbols like E/T/A directly into TAIPO_POS_* names so they do not
+// expand into HID keycodes before becoming key-position labels.
+#define TAIPO_MAP_L_1(x) TAIPO_POS_L##x
+#define TAIPO_MAP_L_2(x, y) TAIPO_POS_L##x TAIPO_POS_L##y
+#define TAIPO_MAP_L_3(x, y, z) TAIPO_POS_L##x TAIPO_POS_L##y TAIPO_POS_L##z
+#define TAIPO_MAP_L_4(x, y, z, w) TAIPO_POS_L##x TAIPO_POS_L##y TAIPO_POS_L##z TAIPO_POS_L##w
+#define TAIPO_MAP_L_5(x, y, z, w, v) TAIPO_POS_L##x TAIPO_POS_L##y TAIPO_POS_L##z TAIPO_POS_L##w TAIPO_POS_L##v
+#define TAIPO_MAP_L_6(x, y, z, w, v, u) TAIPO_POS_L##x TAIPO_POS_L##y TAIPO_POS_L##z TAIPO_POS_L##w TAIPO_POS_L##v TAIPO_POS_L##u
+#define TAIPO_MAP_L_7(x, y, z, w, v, u, t) TAIPO_POS_L##x TAIPO_POS_L##y TAIPO_POS_L##z TAIPO_POS_L##w TAIPO_POS_L##v TAIPO_POS_L##u TAIPO_POS_L##t
+#define TAIPO_MAP_L_8(x, y, z, w, v, u, t, s) TAIPO_POS_L##x TAIPO_POS_L##y TAIPO_POS_L##z TAIPO_POS_L##w TAIPO_POS_L##v TAIPO_POS_L##u TAIPO_POS_L##t TAIPO_POS_L##s
 
-#define TAIPO_MAP_L_1(x) TAIPO_L_POS(x)
-#define TAIPO_MAP_L_2(x, y) TAIPO_L_POS(x) TAIPO_L_POS(y)
-#define TAIPO_MAP_L_3(x, y, z) TAIPO_L_POS(x) TAIPO_L_POS(y) TAIPO_L_POS(z)
-#define TAIPO_MAP_L_4(x, y, z, w) TAIPO_L_POS(x) TAIPO_L_POS(y) TAIPO_L_POS(z) TAIPO_L_POS(w)
-#define TAIPO_MAP_L_5(x, y, z, w, v) TAIPO_L_POS(x) TAIPO_L_POS(y) TAIPO_L_POS(z) TAIPO_L_POS(w) TAIPO_L_POS(v)
-#define TAIPO_MAP_L_6(x, y, z, w, v, u) TAIPO_L_POS(x) TAIPO_L_POS(y) TAIPO_L_POS(z) TAIPO_L_POS(w) TAIPO_L_POS(v) TAIPO_L_POS(u)
-#define TAIPO_MAP_L_7(x, y, z, w, v, u, t) TAIPO_L_POS(x) TAIPO_L_POS(y) TAIPO_L_POS(z) TAIPO_L_POS(w) TAIPO_L_POS(v) TAIPO_L_POS(u) TAIPO_L_POS(t)
-#define TAIPO_MAP_L_8(x, y, z, w, v, u, t, s) TAIPO_L_POS(x) TAIPO_L_POS(y) TAIPO_L_POS(z) TAIPO_L_POS(w) TAIPO_L_POS(v) TAIPO_L_POS(u) TAIPO_L_POS(t) TAIPO_L_POS(s)
+#define TAIPO_MAP_R_1(x) TAIPO_POS_R##x
+#define TAIPO_MAP_R_2(x, y) TAIPO_POS_R##x TAIPO_POS_R##y
+#define TAIPO_MAP_R_3(x, y, z) TAIPO_POS_R##x TAIPO_POS_R##y TAIPO_POS_R##z
+#define TAIPO_MAP_R_4(x, y, z, w) TAIPO_POS_R##x TAIPO_POS_R##y TAIPO_POS_R##z TAIPO_POS_R##w
+#define TAIPO_MAP_R_5(x, y, z, w, v) TAIPO_POS_R##x TAIPO_POS_R##y TAIPO_POS_R##z TAIPO_POS_R##w TAIPO_POS_R##v
+#define TAIPO_MAP_R_6(x, y, z, w, v, u) TAIPO_POS_R##x TAIPO_POS_R##y TAIPO_POS_R##z TAIPO_POS_R##w TAIPO_POS_R##v TAIPO_POS_R##u
+#define TAIPO_MAP_R_7(x, y, z, w, v, u, t) TAIPO_POS_R##x TAIPO_POS_R##y TAIPO_POS_R##z TAIPO_POS_R##w TAIPO_POS_R##v TAIPO_POS_R##u TAIPO_POS_R##t
+#define TAIPO_MAP_R_8(x, y, z, w, v, u, t, s) TAIPO_POS_R##x TAIPO_POS_R##y TAIPO_POS_R##z TAIPO_POS_R##w TAIPO_POS_R##v TAIPO_POS_R##u TAIPO_POS_R##t TAIPO_POS_R##s
 
-#define TAIPO_MAP_R_1(x) TAIPO_R_POS(x)
-#define TAIPO_MAP_R_2(x, y) TAIPO_R_POS(x) TAIPO_R_POS(y)
-#define TAIPO_MAP_R_3(x, y, z) TAIPO_R_POS(x) TAIPO_R_POS(y) TAIPO_R_POS(z)
-#define TAIPO_MAP_R_4(x, y, z, w) TAIPO_R_POS(x) TAIPO_R_POS(y) TAIPO_R_POS(z) TAIPO_R_POS(w)
-#define TAIPO_MAP_R_5(x, y, z, w, v) TAIPO_R_POS(x) TAIPO_R_POS(y) TAIPO_R_POS(z) TAIPO_R_POS(w) TAIPO_R_POS(v)
-#define TAIPO_MAP_R_6(x, y, z, w, v, u) TAIPO_R_POS(x) TAIPO_R_POS(y) TAIPO_R_POS(z) TAIPO_R_POS(w) TAIPO_R_POS(v) TAIPO_R_POS(u)
-#define TAIPO_MAP_R_7(x, y, z, w, v, u, t) TAIPO_R_POS(x) TAIPO_R_POS(y) TAIPO_R_POS(z) TAIPO_R_POS(w) TAIPO_R_POS(v) TAIPO_R_POS(u) TAIPO_R_POS(t)
-#define TAIPO_MAP_R_8(x, y, z, w, v, u, t, s) TAIPO_R_POS(x) TAIPO_R_POS(y) TAIPO_R_POS(z) TAIPO_R_POS(w) TAIPO_R_POS(v) TAIPO_R_POS(u) TAIPO_R_POS(t) TAIPO_R_POS(s)
+// Lowercase aliases keep taipo position tokens distinct from ZMK keycode macros
+// like E/T/O/A/I/N/S/R from <dt-bindings/zmk/keys.h>.
+#define TAIPO_POS_Le TAIPO_POS_LE
+#define TAIPO_POS_Lt TAIPO_POS_LT
+#define TAIPO_POS_Lo TAIPO_POS_LO
+#define TAIPO_POS_La TAIPO_POS_LA
+#define TAIPO_POS_Li TAIPO_POS_LI
+#define TAIPO_POS_Ln TAIPO_POS_LN
+#define TAIPO_POS_Ls TAIPO_POS_LS
+#define TAIPO_POS_Lr TAIPO_POS_LR
+
+#define TAIPO_POS_Re TAIPO_POS_RE
+#define TAIPO_POS_Rt TAIPO_POS_RT
+#define TAIPO_POS_Ro TAIPO_POS_RO
+#define TAIPO_POS_Ra TAIPO_POS_RA
+#define TAIPO_POS_Ri TAIPO_POS_RI
+#define TAIPO_POS_Rn TAIPO_POS_RN
+#define TAIPO_POS_Rs TAIPO_POS_RS
+#define TAIPO_POS_Rr TAIPO_POS_RR
 
 #define TAIPO_GET_KEYS(_1,_2,_3,_4,_5,_6,_7,_8,NAME,...) NAME
 #define TAIPO_MAP_L(...) TAIPO_GET_KEYS(__VA_ARGS__, TAIPO_MAP_L_8, TAIPO_MAP_L_7, TAIPO_MAP_L_6, TAIPO_MAP_L_5, TAIPO_MAP_L_4, TAIPO_MAP_L_3, TAIPO_MAP_L_2, TAIPO_MAP_L_1)(__VA_ARGS__)
@@ -122,171 +141,171 @@ ZMK_COMBO(taipoRspace   , &kp SPACE, ITR, TAIPO, TAIPO_COMBO_TERM_FAST)
 ZMK_COMBO(taipoLbspace  , &kp BSPC , OTL, TAIPO, TAIPO_COMBO_TERM_FAST)
 ZMK_COMBO(taipoRbspace  , &kp BSPC , OTR, TAIPO, TAIPO_COMBO_TERM_FAST)
 
-ZMK_COMBO_TAIPO(e       , &kp E    , E)
-ZMK_COMBO_TAIPO(t       , &kp T    , T)
-ZMK_COMBO_TAIPO(o       , &kp O    , O)
-ZMK_COMBO_TAIPO(a       , &kp A    , A)
+ZMK_COMBO_TAIPO(e       , &kp E    , e)
+ZMK_COMBO_TAIPO(t       , &kp T    , t)
+ZMK_COMBO_TAIPO(o       , &kp O    , o)
+ZMK_COMBO_TAIPO(a       , &kp A    , a)
 
-ZMK_COMBO_TAIPO(i       , &kp I    , I)
-ZMK_COMBO_TAIPO(n       , &kp N    , N)
-ZMK_COMBO_TAIPO(s       , &kp S    , S)
-ZMK_COMBO_TAIPO(r       , &kp R    , R)
+ZMK_COMBO_TAIPO(i       , &kp I    , i)
+ZMK_COMBO_TAIPO(n       , &kp N    , n)
+ZMK_COMBO_TAIPO(s       , &kp S    , s)
+ZMK_COMBO_TAIPO(r       , &kp R    , r)
 
-ZMK_COMBO_TAIPO_IT(cape , &kp LS(E), E)
-ZMK_COMBO_TAIPO_IT(capt , &kp LS(T), T)
-ZMK_COMBO_TAIPO_IT(capo , &kp LS(O), O)
-ZMK_COMBO_TAIPO_IT(capa , &kp LS(A), A)
+ZMK_COMBO_TAIPO_IT(cape , &kp LS(E), e)
+ZMK_COMBO_TAIPO_IT(capt , &kp LS(T), t)
+ZMK_COMBO_TAIPO_IT(capo , &kp LS(O), o)
+ZMK_COMBO_TAIPO_IT(capa , &kp LS(A), a)
 
-ZMK_COMBO_TAIPO_OT(lpar , &kp LPAR , E)
-ZMK_COMBO_TAIPO_OT(lbkt , &kp LBKT , T)
-ZMK_COMBO_TAIPO_OT(lbrc , &kp LBRC , O)
-ZMK_COMBO_TAIPO_OT(lt   , &kp LT   , A)
+ZMK_COMBO_TAIPO_OT(lpar , &kp LPAR , e)
+ZMK_COMBO_TAIPO_OT(lbkt , &kp LBKT , t)
+ZMK_COMBO_TAIPO_OT(lbrc , &kp LBRC , o)
+ZMK_COMBO_TAIPO_OT(lt   , &kp LT   , a)
 
-ZMK_COMBO_TAIPO_IT(capi , &kp LS(I), I)
-ZMK_COMBO_TAIPO_IT(capn , &kp LS(N), N)
-ZMK_COMBO_TAIPO_IT(caps , &kp LS(S), S)
-ZMK_COMBO_TAIPO_IT(capr , &kp LS(R), R)
+ZMK_COMBO_TAIPO_IT(capi , &kp LS(I), i)
+ZMK_COMBO_TAIPO_IT(capn , &kp LS(N), n)
+ZMK_COMBO_TAIPO_IT(caps , &kp LS(S), s)
+ZMK_COMBO_TAIPO_IT(capr , &kp LS(R), r)
 
-ZMK_COMBO_TAIPO_OT(rpar , &kp RPAR , I)
-ZMK_COMBO_TAIPO_OT(rbkt , &kp RBKT , N)
-ZMK_COMBO_TAIPO_OT(rbrc , &kp RBRC , S)
-ZMK_COMBO_TAIPO_OT(gt   , &kp GT   , R)
+ZMK_COMBO_TAIPO_OT(rpar , &kp RPAR , i)
+ZMK_COMBO_TAIPO_OT(rbkt , &kp RBKT , n)
+ZMK_COMBO_TAIPO_OT(rbrc , &kp RBRC , s)
+ZMK_COMBO_TAIPO_OT(gt   , &kp GT   , r)
 
-ZMK_COMBO_TAIPO(h       , &kp H    , E, T)
-ZMK_COMBO_TAIPO(l       , &kp L    , O, A)
-ZMK_COMBO_TAIPO(y       , &kp Y    , I, N)
-ZMK_COMBO_TAIPO(b       , &kp B    , S, R)
+ZMK_COMBO_TAIPO(h       , &kp H    , e, t)
+ZMK_COMBO_TAIPO(l       , &kp L    , o, a)
+ZMK_COMBO_TAIPO(y       , &kp Y    , i, n)
+ZMK_COMBO_TAIPO(b       , &kp B    , s, r)
 
-ZMK_COMBO_TAIPO_IT(caph , &kp LS(H), E, T)
-ZMK_COMBO_TAIPO_IT(capl , &kp LS(L), O, A)
-ZMK_COMBO_TAIPO_IT(capy , &kp LS(Y), I, N)
-ZMK_COMBO_TAIPO_IT(capb , &kp LS(B), S, R)
+ZMK_COMBO_TAIPO_IT(caph , &kp LS(H), e, t)
+ZMK_COMBO_TAIPO_IT(capl , &kp LS(L), o, a)
+ZMK_COMBO_TAIPO_IT(capy , &kp LS(Y), i, n)
+ZMK_COMBO_TAIPO_IT(capb , &kp LS(B), s, r)
 
-ZMK_COMBO_TAIPO_OT(n0   , &kp N0   , E, T)
-ZMK_COMBO_TAIPO_OT(n4   , &kp N4   , O, A)
-ZMK_COMBO_TAIPO_OT(n5   , &kp N5   , I, N)
-ZMK_COMBO_TAIPO_OT(n9   , &kp N9   , S, R)
+ZMK_COMBO_TAIPO_OT(n0   , &kp N0   , e, t)
+ZMK_COMBO_TAIPO_OT(n4   , &kp N4   , o, a)
+ZMK_COMBO_TAIPO_OT(n5   , &kp N5   , i, n)
+ZMK_COMBO_TAIPO_OT(n9   , &kp N9   , s, r)
 
-ZMK_COMBO_TAIPO(g       , &kp G    , I, R)
-ZMK_COMBO_TAIPO(u       , &kp U    , T, O)
-ZMK_COMBO_TAIPO(d       , &kp D    , E, A)
-ZMK_COMBO_TAIPO(p       , &kp P    , N, S)
+ZMK_COMBO_TAIPO(g       , &kp G    , i, r)
+ZMK_COMBO_TAIPO(u       , &kp U    , t, o)
+ZMK_COMBO_TAIPO(d       , &kp D    , e, a)
+ZMK_COMBO_TAIPO(p       , &kp P    , n, s)
 
-ZMK_COMBO_TAIPO_IT(capg , &kp LS(G), I, R)
-ZMK_COMBO_TAIPO_IT(capu , &kp LS(U), T, O)
-ZMK_COMBO_TAIPO_IT(capd , &kp LS(D), E, A)
-ZMK_COMBO_TAIPO_IT(capp , &kp LS(P), N, S)
+ZMK_COMBO_TAIPO_IT(capg , &kp LS(G), i, r)
+ZMK_COMBO_TAIPO_IT(capu , &kp LS(U), t, o)
+ZMK_COMBO_TAIPO_IT(capd , &kp LS(D), e, a)
+ZMK_COMBO_TAIPO_IT(capp , &kp LS(P), n, s)
 
-ZMK_COMBO_TAIPO_OT(hash , &kp HASH , I, R)
-ZMK_COMBO_TAIPO_OT(n2   , &kp N2   , T, O)
-ZMK_COMBO_TAIPO_OT(a    , &kp AT   , E, A)
-ZMK_COMBO_TAIPO_OT(n7   , &kp N7   , N, S)
+ZMK_COMBO_TAIPO_OT(hash , &kp HASH , i, r)
+ZMK_COMBO_TAIPO_OT(n2   , &kp N2   , t, o)
+ZMK_COMBO_TAIPO_OT(a    , &kp AT   , e, a)
+ZMK_COMBO_TAIPO_OT(n7   , &kp N7   , n, s)
 
-ZMK_COMBO_TAIPO(c       , &kp C    , E, O)
-ZMK_COMBO_TAIPO(q       , &kp Q    , T, A)
-ZMK_COMBO_TAIPO(f       , &kp F    , I, S)
-ZMK_COMBO_TAIPO(z       , &kp Z    , N, R)
+ZMK_COMBO_TAIPO(c       , &kp C    , e, o)
+ZMK_COMBO_TAIPO(q       , &kp Q    , t, a)
+ZMK_COMBO_TAIPO(f       , &kp F    , i, s)
+ZMK_COMBO_TAIPO(z       , &kp Z    , n, r)
 
-ZMK_COMBO_TAIPO_IT(capc , &kp LS(C), E, O)
-ZMK_COMBO_TAIPO_IT(capq , &kp LS(Q), T, A)
-ZMK_COMBO_TAIPO_IT(capf , &kp LS(F), I, S)
-ZMK_COMBO_TAIPO_IT(capz , &kp LS(Z), N, R)
+ZMK_COMBO_TAIPO_IT(capc , &kp LS(C), e, o)
+ZMK_COMBO_TAIPO_IT(capq , &kp LS(Q), t, a)
+ZMK_COMBO_TAIPO_IT(capf , &kp LS(F), i, s)
+ZMK_COMBO_TAIPO_IT(capz , &kp LS(Z), n, r)
 
-ZMK_COMBO_TAIPO_OT(n1   , &kp N1   , E, O)
-ZMK_COMBO_TAIPO_OT(n3   , &kp N3   , T, A)
-ZMK_COMBO_TAIPO_OT(n6   , &kp N6   , I, S)
-ZMK_COMBO_TAIPO_OT(n8   , &kp N8   , N, R)
+ZMK_COMBO_TAIPO_OT(n1   , &kp N1   , e, o)
+ZMK_COMBO_TAIPO_OT(n3   , &kp N3   , t, a)
+ZMK_COMBO_TAIPO_OT(n6   , &kp N6   , i, s)
+ZMK_COMBO_TAIPO_OT(n8   , &kp N8   , n, r)
 
-ZMK_COMBO_TAIPO(v       , &kp V    , E, S)
-ZMK_COMBO_TAIPO(x       , &kp X    , T, R)
-ZMK_COMBO_TAIPO(k       , &kp K    , I, O)
-ZMK_COMBO_TAIPO(j       , &kp J    , N, A)
+ZMK_COMBO_TAIPO(v       , &kp V    , e, s)
+ZMK_COMBO_TAIPO(x       , &kp X    , t, r)
+ZMK_COMBO_TAIPO(k       , &kp K    , i, o)
+ZMK_COMBO_TAIPO(j       , &kp J    , n, a)
 
-ZMK_COMBO_TAIPO_IT(capv , &kp LS(V), E, S)
-ZMK_COMBO_TAIPO_IT(capx , &kp LS(X), T, R)
-ZMK_COMBO_TAIPO_IT(capk , &kp LS(K), I, O)
-ZMK_COMBO_TAIPO_IT(capj , &kp LS(J), N, A)
+ZMK_COMBO_TAIPO_IT(capv , &kp LS(V), e, s)
+ZMK_COMBO_TAIPO_IT(capx , &kp LS(X), t, r)
+ZMK_COMBO_TAIPO_IT(capk , &kp LS(K), i, o)
+ZMK_COMBO_TAIPO_IT(capj , &kp LS(J), n, a)
 
-ZMK_COMBO_TAIPO_OT(star , &kp STAR , E, S)
-ZMK_COMBO_TAIPO_OT(caret, &kp CARET, T, R)
-ZMK_COMBO_TAIPO_OT(plus , &kp PLUS , I, O)
-ZMK_COMBO_TAIPO_OT(equal, &kp EQUAL, N, A)
+ZMK_COMBO_TAIPO_OT(star , &kp STAR , e, s)
+ZMK_COMBO_TAIPO_OT(caret, &kp CARET, t, r)
+ZMK_COMBO_TAIPO_OT(plus , &kp PLUS , i, o)
+ZMK_COMBO_TAIPO_OT(equal, &kp EQUAL, n, a)
 
-ZMK_COMBO_TAIPO(minus   , &kp MINUS, N, O)
-ZMK_COMBO_TAIPO(w       , &kp W    , I, A)
-ZMK_COMBO_TAIPO(m       , &kp M    , E, R)
-ZMK_COMBO_TAIPO(slash   , &kp SLASH, T, S)
+ZMK_COMBO_TAIPO(minus   , &kp MINUS, n, o)
+ZMK_COMBO_TAIPO(w       , &kp W    , i, a)
+ZMK_COMBO_TAIPO(m       , &kp M    , e, r)
+ZMK_COMBO_TAIPO(slash   , &kp SLASH, t, s)
 
-ZMK_COMBO_TAIPO_IT(under, &kp UNDER, N, O)
-ZMK_COMBO_TAIPO_IT(capw , &kp LS(W), I, A)
-ZMK_COMBO_TAIPO_IT(capm , &kp LS(M), E, R)
-ZMK_COMBO_TAIPO_IT(bslh , &kp BSLH , T, S)
+ZMK_COMBO_TAIPO_IT(under, &kp UNDER, n, o)
+ZMK_COMBO_TAIPO_IT(capw , &kp LS(W), i, a)
+ZMK_COMBO_TAIPO_IT(capm , &kp LS(M), e, r)
+ZMK_COMBO_TAIPO_IT(bslh , &kp BSLH , t, s)
 
-ZMK_COMBO_TAIPO_OT(prcnt, &kp PRCNT, N, O)
-ZMK_COMBO_TAIPO_OT(amps , &kp AMPS , I, A)
-ZMK_COMBO_TAIPO_OT(dllr , &kp DLLR , E, R)
-ZMK_COMBO_TAIPO_OT(pipe , &kp PIPE , T, S)
+ZMK_COMBO_TAIPO_OT(prcnt, &kp PRCNT, n, o)
+ZMK_COMBO_TAIPO_OT(amps , &kp AMPS , i, a)
+ZMK_COMBO_TAIPO_OT(dllr , &kp DLLR , e, r)
+ZMK_COMBO_TAIPO_OT(pipe , &kp PIPE , t, s)
 
-ZMK_COMBO_TAIPO(sqt     , &kp SQT  , S, A)
-ZMK_COMBO_TAIPO(semi    , &kp SEMI , O, R)
-ZMK_COMBO_TAIPO(qmark   , &kp QMARK, I, T)
-ZMK_COMBO_TAIPO(comma   , &kp COMMA, E, N)
+ZMK_COMBO_TAIPO(sqt     , &kp SQT  , s, a)
+ZMK_COMBO_TAIPO(semi    , &kp SEMI , o, r)
+ZMK_COMBO_TAIPO(qmark   , &kp QMARK, i, t)
+ZMK_COMBO_TAIPO(comma   , &kp COMMA, e, n)
 
-ZMK_COMBO_TAIPO_IT(dqt  , &kp DQT  , S, A)
-ZMK_COMBO_TAIPO_IT(colon, &kp COLON, O, R)
-ZMK_COMBO_TAIPO_IT(excl , &kp EXCL , I, T)
-ZMK_COMBO_TAIPO_IT(dot  , &kp DOT  , E, N)
+ZMK_COMBO_TAIPO_IT(dqt  , &kp DQT  , s, a)
+ZMK_COMBO_TAIPO_IT(colon, &kp COLON, o, r)
+ZMK_COMBO_TAIPO_IT(excl , &kp EXCL , i, t)
+ZMK_COMBO_TAIPO_IT(dot  , &kp DOT  , e, n)
 
-ZMK_COMBO_TAIPO_OT(grave, &kp GRAVE, S, A)
-ZMK_COMBO_TAIPO_OT(none1, &none    , O, R)
-ZMK_COMBO_TAIPO_OT(none2, &none    , I, T)
-ZMK_COMBO_TAIPO_OT(tilde, &kp TILDE, E, N)
+ZMK_COMBO_TAIPO_OT(grave, &kp GRAVE, s, a)
+ZMK_COMBO_TAIPO_OT(none1, &none    , o, r)
+ZMK_COMBO_TAIPO_OT(none2, &none    , i, t)
+ZMK_COMBO_TAIPO_OT(tilde, &kp TILDE, e, n)
 
-ZMK_COMBO_TAIPO(enter   , &kp ENTER, E, T, O)
-ZMK_COMBO_TAIPO(tab     , &kp TAB  , I, N, S)
+ZMK_COMBO_TAIPO(enter   , &kp ENTER, e, t, o)
+ZMK_COMBO_TAIPO(tab     , &kp TAB  , i, n, s)
 
-ZMK_COMBO_TAIPO_IT(esc  , &kp ESC  , E, T, O)
-ZMK_COMBO_TAIPO_IT(del  , &kp DEL  , I, N, S)
+ZMK_COMBO_TAIPO_IT(esc  , &kp ESC  , e, t, o)
+ZMK_COMBO_TAIPO_IT(del  , &kp DEL  , i, n, s)
 
 #ifndef TAIPO_PASTE_BINDING
 #define TAIPO_PASTE_BINDING &kp LS(INSERT)
 #endif
 
-ZMK_COMBO_TAIPO_OT(paste, TAIPO_PASTE_BINDING, E, T, O)
+ZMK_COMBO_TAIPO_OT(paste, TAIPO_PASTE_BINDING, e, t, o)
 
 // These need to be sticky, but clear with repeat presses.
-ZMK_COMBO_TAIPO(gui     , &sk LGUI    , A, R)
-ZMK_COMBO_TAIPO(alt     , &sk LALT    , O, S)
-ZMK_COMBO_TAIPO(ctl     , &sk LCTRL   , T, N)
-ZMK_COMBO_TAIPO(sft     , &sk LSHFT   , E, I)
+ZMK_COMBO_TAIPO(gui     , &sk LGUI    , a, r)
+ZMK_COMBO_TAIPO(alt     , &sk LALT    , o, s)
+ZMK_COMBO_TAIPO(ctl     , &sk LCTRL   , t, n)
+ZMK_COMBO_TAIPO(sft     , &sk LSHFT   , e, i)
 
 // Enumerate all possible GACS combinations.
-ZMK_COMBO_TAIPO(ga      , &sk LG(LALT)         , O, S, A, R)
-ZMK_COMBO_TAIPO(gc      , &sk LG(LCTRL)        , T, N, A, R)
-ZMK_COMBO_TAIPO(gs      , &sk LG(LSHFT)        , E, I, A, R)
-ZMK_COMBO_TAIPO(ac      , &sk LA(LCTRL)        , T, N, O, S)
-ZMK_COMBO_TAIPO(as      , &sk LA(LSHFT)        , E, I, O, S)
-ZMK_COMBO_TAIPO(cs      , &sk LC(LSHFT)        , E, I, T, N)
-ZMK_COMBO_TAIPO(gac     , &sk LG(LA(LCTRL))    , T, N, O, S, A, R)
-ZMK_COMBO_TAIPO(gas     , &sk LG(LA(LSHFT))    , E, I, O, S, A, R)
-ZMK_COMBO_TAIPO(gcs     , &sk LG(LC(LSHFT))    , E, I, T, N, A, R)
-ZMK_COMBO_TAIPO(acs     , &sk LA(LC(LSHFT))    , E, I, T, N, O, S)
-ZMK_COMBO_TAIPO(gacs    , &sk LG(LA(LC(LSHFT))), E, I, T, N, O, S, A, R)
+ZMK_COMBO_TAIPO(ga      , &sk LG(LALT)         , o, s, a, r)
+ZMK_COMBO_TAIPO(gc      , &sk LG(LCTRL)        , t, n, a, r)
+ZMK_COMBO_TAIPO(gs      , &sk LG(LSHFT)        , e, i, a, r)
+ZMK_COMBO_TAIPO(ac      , &sk LA(LCTRL)        , t, n, o, s)
+ZMK_COMBO_TAIPO(as      , &sk LA(LSHFT)        , e, i, o, s)
+ZMK_COMBO_TAIPO(cs      , &sk LC(LSHFT)        , e, i, t, n)
+ZMK_COMBO_TAIPO(gac     , &sk LG(LA(LCTRL))    , t, n, o, s, a, r)
+ZMK_COMBO_TAIPO(gas     , &sk LG(LA(LSHFT))    , e, i, o, s, a, r)
+ZMK_COMBO_TAIPO(gcs     , &sk LG(LC(LSHFT))    , e, i, t, n, a, r)
+ZMK_COMBO_TAIPO(acs     , &sk LA(LC(LSHFT))    , e, i, t, n, o, s)
+ZMK_COMBO_TAIPO(gacs    , &sk LG(LA(LC(LSHFT))), e, i, t, n, o, s, a, r)
 
 // hjkl is left/down/up/right, so mirrored is right/up/down/left.
-ZMK_COMBO_TAIPO_IT(right, &kp RIGHT, A, R)
-ZMK_COMBO_TAIPO_IT(up   , &kp UP   , O, S)
-ZMK_COMBO_TAIPO_IT(down , &kp DOWN , T, N)
-ZMK_COMBO_TAIPO_IT(left , &kp LEFT , E, I)
+ZMK_COMBO_TAIPO_IT(right, &kp RIGHT, a, r)
+ZMK_COMBO_TAIPO_IT(up   , &kp UP   , o, s)
+ZMK_COMBO_TAIPO_IT(down , &kp DOWN , t, n)
+ZMK_COMBO_TAIPO_IT(left , &kp LEFT , e, i)
 
 // Deviation from the official Taipo layout: Home/PgDn/PgUp/End.
-ZMK_COMBO_TAIPO_OT(home , &kp HOME , E, I)
-ZMK_COMBO_TAIPO_OT(pgdn , &kp PG_DN, T, N)
-ZMK_COMBO_TAIPO_OT(pgup , &kp PG_UP, O, S)
-ZMK_COMBO_TAIPO_OT(end  , &kp END  , A, R)
+ZMK_COMBO_TAIPO_OT(home , &kp HOME , e, i)
+ZMK_COMBO_TAIPO_OT(pgdn , &kp PG_DN, t, n)
+ZMK_COMBO_TAIPO_OT(pgup , &kp PG_UP, o, s)
+ZMK_COMBO_TAIPO_OT(end  , &kp END  , a, r)
 
 // Taipo leader combo for F-key access. Depends on urob's zmk-leader-key
-ZMK_COMBO_TAIPO_OT(lead, &tlead, I, N, S)
+ZMK_COMBO_TAIPO_OT(lead, &tlead, i, n, s)
 
 #define ZMK_TAIPO_LEADER_SEQUENCE(name, leader_bindings, leader_sequence) \
     / { \
