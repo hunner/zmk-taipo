@@ -4,8 +4,8 @@ Reusable Taipo layout module for ZMK.
 
 ## Dependencies
 
-- [`zmk-helpers`](https://github.com/urob/zmk-helpers) for key-label conventions.
-- Optional: [`zmk-leader-key`](https://github.com/urob/zmk-leader-key) if you include `features/leader.dtsi`.
+- [`zmk-helpers`](https://github.com/urob/zmk-helpers) for key-label conventions
+- [`zmk-leader-key`](https://github.com/urob/zmk-leader-key) for F-key leaders
 
 ## Prerequisites
 
@@ -17,7 +17,7 @@ This module will map combos using `LT4..LT1`, `LM4..LM1`, `RT1..RT4`, and `RM1..
 
 1. Add this repository as a west project (commonly at `modules/zmk/taipo`)
 2. In your keymap, include key-labels
-3. Define a layer called `TAIPO` and assign it a layer number
+3. Define a layer called `TAIPO` and assign it a layer number. The layer can use all `&none` bindings since taipo.dtsi will override them with combos.
 4. Include the core Taipo combos DTSI file
 5. Include optional feature files as needed
 
@@ -27,13 +27,32 @@ Example:
 #include <zmk-helpers/helper.h>
 #include <zmk-helpers/key-labels/34.h>
 
-#define TAIPO 6
-#define TAIPO_INNER 7 // Used by virtual thumbs
-#define TAIPO_OUTER 8 // Used by virtual thumbs
+#define TAIPO 0
+#define TAIPO_INNER 1 // Used by virtual thumbs
+#define TAIPO_OUTER 2 // Used by virtual thumbs
 #define TAIPO_THUMB_ORDER_OIIO 1
 
 #include <zmk-taipo/taipo.dtsi>
 #include <zmk-taipo/features/virtual_thumbs.dtsi>
+
+ZMK_LAYER(taipo,
+  &none &none &none &none &none &none &none &none &none &none
+  &none &none &none &none &none &none &none &none &none &none
+  &none &none &none &none &none &none &none &none &none &none
+                    &none &none &none &none
+)
+ZMK_LAYER(taipo_inner,
+  &none &none &none &none &none &none &none &none &none &none
+  &none &none &none &none &none &none &none &none &none &none
+  &none &none &none &none &none &none &none &none &none &none
+                    &none &none &none &none
+)
+ZMK_LAYER(taipo_outer,
+  &none &none &none &none &none &none &none &none &none &none
+  &none &none &none &none &none &none &none &none &none &none
+  &none &none &none &none &none &none &none &none &none &none
+                    &none &none &none &none
+)
 ```
 
 ## Positions Contract
