@@ -325,8 +325,8 @@ ZMK_COMBO_TAIPO_OT(paste, TAIPO_PASTE_BINDING, e, t, o)
 // These need to be sticky, but clear with repeat presses.
 ZMK_COMBO_TAIPO(mod1    , &sk TAIPO_MOD_1    , a, r)
 ZMK_COMBO_TAIPO(mod2    , &sk TAIPO_MOD_2    , o, s)
-ZMK_COMBO_TAIPO(mod2    , &sk TAIPO_MOD_3    , t, n)
-ZMK_COMBO_TAIPO(mod2    , &sk TAIPO_MOD_4    , e, i)
+ZMK_COMBO_TAIPO(mod3    , &sk TAIPO_MOD_3    , t, n)
+ZMK_COMBO_TAIPO(mod4    , &sk TAIPO_MOD_4    , e, i)
 
 // Enumerate all possible mod combinations.
 ZMK_COMBO_TAIPO(mod12   , &sk TAIPO_MOD_F1(TAIPO_MOD_2)                            , o, s, a, r)
