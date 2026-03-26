@@ -310,6 +310,15 @@ ZMK_COMBO_TAIPO_OT(paste, TAIPO_PASTE_BINDING, e, t, o)
 #define TAIPO_MOD_F2 LC
 #define TAIPO_MOD_F3 LA
 #define TAIPO_MOD_F4 LG
+#elif defined(TAIPO_MODS_SACG)
+#define TAIPO_MOD_1 LSHFT
+#define TAIPO_MOD_2 LALT
+#define TAIPO_MOD_3 LCTRL
+#define TAIPO_MOD_4 LGUI
+#define TAIPO_MOD_F1 LS
+#define TAIPO_MOD_F2 LA
+#define TAIPO_MOD_F3 LC
+#define TAIPO_MOD_F4 LG
 #else
 // TAIPO_MODS_GACS is the default
 #define TAIPO_MOD_1 LGUI
