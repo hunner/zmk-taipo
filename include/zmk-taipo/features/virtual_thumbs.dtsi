@@ -10,7 +10,7 @@
 #endif
 
 // One-shot virtual inner thumb: M2+M3+M4
-ZMK_COMBO_TAIPO(virt_inner_once, &sl TAIPO_INNER, t, o, e)
+ZMK_COMBO_TAIPO(virt_inner_once, &sl TAIPO_INNER, t, o, a)
 
 // One-shot virtual outer thumb: T2+T3+T4
 ZMK_COMBO_TAIPO(virt_outer_once, &sl TAIPO_OUTER, n, s, r)
