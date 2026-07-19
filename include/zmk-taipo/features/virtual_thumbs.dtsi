@@ -28,3 +28,7 @@ ZMK_COMBO_TAIPO_OT(virt_outer_unlock, &tog TAIPO_OUTER, e, n, s, r)
 // Optional space/backspace fallbacks for thumbless Taipo.
 ZMK_COMBO_TAIPO(vspace, &kp SPACE, e, t, o, a)
 ZMK_COMBO_TAIPO(vbspc , &kp BSPC , i, n, s, r)
+ZMK_COMBO_TAIPO_IT(vspace_it, &kp SPACE, e, t, o, a)
+ZMK_COMBO_TAIPO_IT(vbspc_it , &kp BSPC , i, n, s, r)
+ZMK_COMBO_TAIPO_OT(vspace_ot, &kp SPACE, e, t, o, a)
+ZMK_COMBO_TAIPO_OT(vbspc_ot , &kp BSPC , i, n, s, r)
